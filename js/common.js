@@ -166,4 +166,43 @@ $(function() {
         }
     });
 
+    $('#ask_form').validate({
+        rules: {
+            // simple rule, converted to {required:true}
+            name: "required",
+            message: "required",
+            // compound rule
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        onfocusout: function(element) {
+            if($("#ask_form input.valid").length == 2 && $("#ask_form textarea.valid").length == 1){
+                $("#ask_form input[type='submit']").removeAttr('disabled');
+            } else {
+                $("#ask_form input[type='submit']").attr('disabled', 'disabled');
+            }
+            this.element(element);
+        },
+        onkeyup: function(element) {
+            if($("#ask_form input.valid").length == 2 && $("#ask_form textarea.valid").length == 1){
+                $("#ask_form input[type='submit']").removeAttr('disabled');
+            } else {
+                $("#ask_form input[type='submit']").attr('disabled', 'disabled');
+            }
+            this.element(element);
+        },
+    });
+
+    $('#ask_form').submit(function(){
+        $.ajax({
+            url: 'https://prod-yaskravo-app.azurewebsites.net/api/mail/sales/message',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function done(message) {$('#thank-you').modal()}
+        });
+        return false;
+    });
+
 });
