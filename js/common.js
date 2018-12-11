@@ -5,6 +5,9 @@ $(function() {
         onLeave: function(origin){
             $('.aos-init').removeClass('aos-animate');
             $('.btn-more.active').trigger('click');
+            // $(window).trigger('resize');
+            // $(document).trigger('resize');
+            // $('html, body').trigger('resize');
         },
         afterLoad: function(origin){
             let current = $('.section.active').index();
@@ -54,6 +57,21 @@ $(function() {
         $.fn.fullpage.moveTo(10);
     });
 
+    $('.tec1').click(function(e){
+        e.preventDefault();
+        $.fn.fullpage.moveTo(4);
+    });
+
+    $('.tec2').click(function(e){
+        e.preventDefault();
+        $.fn.fullpage.moveTo(5);
+    });
+
+    $('.tec3').click(function(e){
+        e.preventDefault();
+        $.fn.fullpage.moveTo(6);
+    });
+
     let qty = $('#content .section').length;
     if(qty < 10){
         qty = '0' + qty;
@@ -61,12 +79,12 @@ $(function() {
     $('.nav-nums .qty').html(qty);
 
     $('.menu-open button').on('click', function () {
-       $(this).addClass('hidden');
-       $('.menu-wrap').addClass('active');
+        $(this).addClass('hidden');
+        $('.menu-wrap').addClass('active');
     });
 
     $('.menu-close button').on('click', function () {
-       $('.menu-open button').removeClass('hidden');
+        $('.menu-open button').removeClass('hidden');
         $('.menu-wrap').removeClass('active');
     });
 
@@ -147,12 +165,12 @@ $(function() {
 
         var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
         var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
-        lFollowX = (20 * lMouseX) / 50;
-        lFollowY = (10 * lMouseY) / 50;
+        lFollowX = (20 * lMouseX) / 150;
+        lFollowY = (10 * lMouseY) / 150;
         sFollowX = (20 * lMouseX) / 200;
         sFollowY = (10 * lMouseY) / 200;
-        tFollowX = (20 * lMouseX) / 30;
-        tFollowY = (10 * lMouseY) / 30;
+        tFollowX = (20 * lMouseX) / 100;
+        tFollowY = (10 * lMouseY) / 100;
 
     });
 
