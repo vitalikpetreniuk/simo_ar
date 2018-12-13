@@ -1,5 +1,9 @@
 $(function() {
 
+    $(window).on('load', function(){
+        $('.preloader').fadeOut();
+    });
+
     $('#content').fullpage({
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
         onLeave: function(origin){
